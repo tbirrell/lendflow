@@ -10,12 +10,6 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-
     public function testCreateUser()
     {
         $user = User::factory()->make();

@@ -28,20 +28,20 @@ Route::get('users/{user}', [UserController::class, 'show']);
 Route::post('users/create', [UserController::class, 'create']);
 Route::post('users/update/{user}', [UserController::class, 'update'])->middleware('auth:api'); //auth me
 
-Route::get('file/get_all', [FileController::class, 'index']);
-Route::get('file/{file}', [FileController::class, 'show']);
-Route::post('file/create', [FileController::class, 'create']); //auth me
-Route::post('file/update/{file}', [FileController::class, 'update']); //auth me lock to owner
+Route::get('files', [FileController::class, 'index']);
+Route::get('files/{file}', [FileController::class, 'show']);
+Route::post('files/create', [FileController::class, 'create']); //auth me
+Route::post('files/update/{file}', [FileController::class, 'update']); //auth me lock to owner
 
-Route::post('tag/create', [TagController::class, 'index']); //auth me
-Route::post('tag/update/{tag}', [TagController::class, 'show']); //auth me lock to owner
-Route::post('tag/delete/{tag}', [TagController::class, 'delete']); //auth me lock to owner
-Route::get('tag/get_all', [TagController::class, 'create']);
-Route::get('tag/{tag}', [TagController::class, 'update']);
+Route::get('tags', [TagController::class, 'index']);
+Route::get('tags/{tag}', [TagController::class, 'show']);
+Route::post('tags/create', [TagController::class, 'create']); //auth me
+Route::post('tags/update/{tag}', [TagController::class, 'update']); //auth me lock to owner
+Route::post('tags/delete/{tag}', [TagController::class, 'delete']); //auth me lock to owner
 
-Route::get('post/get_all', [PostController::class, 'index']);
-Route::get('post/{post}', [PostController::class, 'show']);
-Route::post('post/create', [PostController::class, 'create']); //auth me
-Route::post('post/update/{post}', [PostController::class, 'update']); //auth me lock to owner
-Route::post('post/delete/{post}', [PostController::class, 'delete']); //auth me lock to owner
+Route::get('posts', [PostController::class, 'index']);
+Route::get('posts/{post}', [PostController::class, 'show']);
+Route::post('posts/create', [PostController::class, 'create']); //auth me
+Route::post('posts/update/{post}', [PostController::class, 'update']); //auth me lock to owner
+Route::post('posts/delete/{post}', [PostController::class, 'delete']); //auth me lock to owner
 
