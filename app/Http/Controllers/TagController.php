@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
 
-    public function index(){}
-    public function show(Tag $tag){}
-    public function create(){}
-    public function update(Tag $tag){}
-    public function delete(Tag $tag){}
+    public function index(Request $request){}
+    public function show(Request $request, Tag $tag){}
+    public function create(Request $request){}
+    public function update(Request $request, Tag $tag){}
+    public function delete(Request $request, Tag $tag){}
 }

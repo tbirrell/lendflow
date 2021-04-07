@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
-    public function index(){}
-    public function show(File $file){}
-    public function create(){}
-    public function update(File $file){}
+    public function index(Request $request){}
+    public function show(Request $request, File $file){}
+    public function create(Request $request){}
+    public function update(Request $request, File $file){}
 }
