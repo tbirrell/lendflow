@@ -25,7 +25,7 @@ class Post extends BaseModel
 
     public function tags()
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 
     //=== ATTRIBUTES ===//

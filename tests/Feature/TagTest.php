@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -13,8 +14,9 @@ class TagTest extends TestCase
     public function testCreateTag()
     {
         $tag = Tag::factory()->make();
+        $user = User::factory()->create();
 
-        $response = $this->postJson('/api/tags/create', [
+        $response = $this->JWTActingAs($user)->postJson('/api/tags/create', [
             'name' => $tag->name
         ]);
 
@@ -28,8 +30,9 @@ class TagTest extends TestCase
     public function testUpdateTag()
     {
         $tag = Tag::factory()->create();
+        $user = User::factory()->create();
 
-        $response = $this->postJson('/api/tags/update/' . $tag->id, [
+        $response = $this->JWTActingAs($user)->postJson('/api/tags/update/' . $tag->id, [
             'name' => 'Test'
         ]);
 
@@ -40,13 +43,24 @@ class TagTest extends TestCase
                  ])->assertJson(fn(AssertableJson $json) => $json->where('name', 'Test')->etc());;
     }
 
+    public function testFailedUpdateForWrongUser()
+    {
+        $this->markTestIncomplete();
+    }
+
     public function testDeleteTag()
     {
         $tag = Tag::factory()->create();
+        $user = User::factory()->create();
 
-        $response = $this->postJson('/api/tags/delete/' . $tag->id);
+        $response = $this->JWTActingAs($user)->postJson('/api/tags/delete/' . $tag->id);
 
         $response->assertStatus(200);
+    }
+
+    public function testFailedDeleteForWrongUser()
+    {
+        $this->markTestIncomplete();
     }
 
     public function testGetTag()

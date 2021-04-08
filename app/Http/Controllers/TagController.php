@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-
     public function index(Request $request)
     {
         return TagResource::collection(Tag::all());
@@ -30,6 +29,7 @@ class TagController extends Controller
 
     public function update(Request $request, Tag $tag)
     {
+        //todo only owner can update/delete his tags
         $data = $request->all();
 
         $tag->update($data);
@@ -39,6 +39,7 @@ class TagController extends Controller
 
     public function delete(Request $request, Tag $tag)
     {
+        //todo only owner can update/delete his tags
         $tag->delete();
 
         return 1;

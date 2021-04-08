@@ -22,7 +22,7 @@ class FileFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'url' => $this->faker->image($dir = '/storage/app/public', $width = 640, $height = 480)
         ];
     }
 }
